@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DndKata", "DndKata.csproj", "{9F476219-4724-437F-96B3-4269D72DD978}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DndKata.Domain", "..\DndKata.Domain\DndKata.Domain.csproj", "{8500C46C-EF31-4C44-A5AF-267CAD8F8D58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DndKata.Domain.Unit.Tests", "DndKata.Domain.Unit.Tests\DndKata.Domain.Unit.Tests.csproj", "{44E9AC8D-3DC2-46FF-89ED-A4FFC4033495}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F476219-4724-437F-96B3-4269D72DD978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F476219-4724-437F-96B3-4269D72DD978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F476219-4724-437F-96B3-4269D72DD978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F476219-4724-437F-96B3-4269D72DD978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8500C46C-EF31-4C44-A5AF-267CAD8F8D58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8500C46C-EF31-4C44-A5AF-267CAD8F8D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8500C46C-EF31-4C44-A5AF-267CAD8F8D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8500C46C-EF31-4C44-A5AF-267CAD8F8D58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44E9AC8D-3DC2-46FF-89ED-A4FFC4033495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44E9AC8D-3DC2-46FF-89ED-A4FFC4033495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44E9AC8D-3DC2-46FF-89ED-A4FFC4033495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44E9AC8D-3DC2-46FF-89ED-A4FFC4033495}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
