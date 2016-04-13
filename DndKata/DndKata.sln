@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DndKata.Domain", "..\DndKat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DndKata.Domain.Unit.Tests", "DndKata.Domain.Unit.Tests\DndKata.Domain.Unit.Tests.csproj", "{44E9AC8D-3DC2-46FF-89ED-A4FFC4033495}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DndKata.Extensions", "..\DndKata.Extensions\DndKata.Extensions.csproj", "{0767A4E5-D1EE-4B69-B71E-72A08118944A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DndKata.Contracts", "DndKata.Contracts\DndKata.Contracts.csproj", "{E6B8864F-C43F-4658-84C6-3A29F87DE596}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{44E9AC8D-3DC2-46FF-89ED-A4FFC4033495}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44E9AC8D-3DC2-46FF-89ED-A4FFC4033495}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44E9AC8D-3DC2-46FF-89ED-A4FFC4033495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0767A4E5-D1EE-4B69-B71E-72A08118944A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0767A4E5-D1EE-4B69-B71E-72A08118944A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0767A4E5-D1EE-4B69-B71E-72A08118944A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0767A4E5-D1EE-4B69-B71E-72A08118944A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6B8864F-C43F-4658-84C6-3A29F87DE596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6B8864F-C43F-4658-84C6-3A29F87DE596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6B8864F-C43F-4658-84C6-3A29F87DE596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6B8864F-C43F-4658-84C6-3A29F87DE596}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

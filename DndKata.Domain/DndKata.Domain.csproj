@@ -42,7 +42,19 @@
   <ItemGroup>
     <Compile Include="Models\AttackResult.cs" />
     <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\StrengthAbility.cs" />
+    <Compile Include="ModifierTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DndKata.Extensions\DndKata.Extensions.csproj">
+      <Project>{0767a4e5-d1ee-4b69-b71e-72a08118944a}</Project>
+      <Name>DndKata.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DndKata\DndKata.Contracts\DndKata.Contracts.csproj">
+      <Project>{E6B8864F-C43F-4658-84C6-3A29F87DE596}</Project>
+      <Name>DndKata.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

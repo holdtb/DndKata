@@ -21,10 +21,20 @@ namespace DndKata.Domain.Models
 
         public AttackResult Attack(Character opponent, int roll)
         {
-            var strengthModifier = GetStrengthModifier(Abilities);
-            var enhancedRoll = roll + strengthModifier;
+            var strengthModifierResult = GetStrengthModifier(Abilities);
+            var enhancedRoll = roll + strengthModifierResult.Modifier;
 
-            if (enhancedRoll < opponent.Armor)
+
+            if (strengthModifierResult.AbilityPresent && enhancedRoll < opponent.Armor)
+            {
+                return new AttackResult
+                {
+                    DamageDealt = 1,
+                    WasHit = true,
+                    LethalHit = false
+                };
+            }
+            if (!strengthModifierResult.AbilityPresent && enhancedRoll < opponent.Armor)
             {
                 return new AttackResult
                 {
@@ -35,11 +45,11 @@ namespace DndKata.Domain.Models
             }
 
             var baseDamageDealt = GetBaseDamage(roll);
-            InflictDamage(opponent, baseDamageDealt, strengthModifier);
+            InflictDamage(opponent, baseDamageDealt, strengthModifierResult.Modifier);
 
-            return new AttackResult()
+            return new AttackResult
             {
-                DamageDealt = baseDamageDealt + strengthModifier,
+                DamageDealt = baseDamageDealt + strengthModifierResult.Modifier,
                 WasHit = true,
                 LethalHit = opponent.HealthPoints <= 0
             };
@@ -55,12 +65,20 @@ namespace DndKata.Domain.Models
             opponent.HealthPoints -= baseDamageDealt + strengthModifier;
         }
 
-        private int GetStrengthModifier(List<IAbility> abilities)
+        private StrengthModifierResult GetStrengthModifier(List<IAbility> abilities)
         {
-            if (!abilities.ContainsAbility(typeof(StrengthAbility))) return 0;
+            if (!abilities.ContainsAbility(typeof(StrengthAbility))) return new StrengthModifierResult()
+            {
+                AbilityPresent = false,
+                Modifier = 0
+            };
 
             var strengthAbility = Abilities.Find(a => a.GetType() == typeof(StrengthAbility));
-            return strengthAbility.Modifier;
+            return new StrengthModifierResult()
+            {
+                Modifier = strengthAbility.Modifier,
+                AbilityPresent = true
+            };
         }
     }
 }
