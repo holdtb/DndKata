@@ -1,8 +1,7 @@
-﻿namespace DndKata.Domain.Models
+﻿namespace DndKata.Contracts
 {
     public interface IAbility
     {
-        AbilityType Ability { get; set; }
         int Score { set; }
         int Modifier { get; }
     }

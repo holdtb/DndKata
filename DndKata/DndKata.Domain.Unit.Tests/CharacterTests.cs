@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DndKata.Contracts;
 using DndKata.Domain.Models;
 using FizzWare.NBuilder;
 using NUnit.Framework;
@@ -29,7 +30,7 @@ namespace DndKata.Domain.Unit.Tests
             // Arrange
             var character = new Character();
             var opponent = Builder<Character>.CreateNew().Build();
-            var roll = 5;
+            const int roll = 5;
 
             // Act
             var attackResult = character.Attack(opponent, roll);
@@ -108,7 +109,7 @@ namespace DndKata.Domain.Unit.Tests
                 .Do(o => o.Armor = 5)
                 .Do(o => o.HealthPoints = 5)
                 .Build();
-            var roll = 20;
+            const int roll = 20;
 
             // Act
             var attackResult = character.Attack(opponent, roll);
@@ -139,6 +140,60 @@ namespace DndKata.Domain.Unit.Tests
             
             Assert.That(opponent.HealthPoints, Is.LessThan(initialOpponentHealth));
             Assert.That(attackResult.LethalHit, Is.True);
+        }
+
+        [Test]
+        public void ChracterAttacks_NormalAttack_HasStrengthAbility_ModifierAddedToRollAndDamageDealt()
+        {
+            // Arrange
+            const int initialOpponentHealth = 1;
+            var character = new Character()
+            {
+                Abilities = new List<IAbility>
+                {
+                    new StrengthAbility{Score = 20}
+                }
+            };
+            var opponent = Builder<Character>
+                .CreateNew()
+                .Do(o => o.Armor = 14)
+                .Do(o => o.HealthPoints = initialOpponentHealth)
+                .Build();
+            const int roll = 10;
+
+            // Act
+            var attackResult = character.Attack(opponent, roll);
+
+            // Assert
+            Assert.That(attackResult.WasHit, Is.True);
+            Assert.That(attackResult.DamageDealt, Is.EqualTo(6));
+        }
+
+        [Test]
+        public void ChracterAttacks_CriticalAttack_HasStrengthAbility_ModifierAddedToRollAndDamageDealt()
+        {
+            // Arrange
+            const int initialOpponentHealth = 1;
+            var character = new Character()
+            {
+                Abilities = new List<IAbility>
+                {
+                    new StrengthAbility{Score = 20}
+                }
+            };
+            var opponent = Builder<Character>
+                .CreateNew()
+                .Do(o => o.Armor = 14)
+                .Do(o => o.HealthPoints = initialOpponentHealth)
+                .Build();
+            const int roll = 20;
+
+            // Act
+            var attackResult = character.Attack(opponent, roll);
+
+            // Assert
+            Assert.That(attackResult.WasHit, Is.True);
+            Assert.That(attackResult.DamageDealt, Is.EqualTo(7));
         }
     }
 }
