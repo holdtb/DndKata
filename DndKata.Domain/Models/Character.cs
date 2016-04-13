@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using DndKata.Contracts;
 using DndKata.Extensions;
 
@@ -6,13 +7,15 @@ namespace DndKata.Domain.Models
 {
     public class Character
     {
+        private readonly IRollCalculator _rollCalculator;
         public string Name { get; set; }
         public int Armor { get; set; }
         public int HealthPoints { get; set; }
         public List<IAbility> Abilities { get; set; }
 
-        public Character()
+        public Character(IRollCalculator rollCalculator)
         {
+            _rollCalculator = rollCalculator;
             Name = "Default";
             Armor = 10;
             HealthPoints = 5;
@@ -22,7 +25,7 @@ namespace DndKata.Domain.Models
         public AttackResult Attack(Character opponent, int roll)
         {
             var strengthModifierResult = GetStrengthModifier(Abilities);
-            var enhancedRoll = roll + strengthModifierResult.Modifier;
+            var enhancedRoll = _rollCalculator.GetEnhancedRoll(roll, strengthModifierResult);
 
 
             if (strengthModifierResult.AbilityPresent && enhancedRoll < opponent.Armor)

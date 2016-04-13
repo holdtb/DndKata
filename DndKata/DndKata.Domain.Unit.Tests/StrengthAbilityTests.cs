@@ -107,5 +107,31 @@ namespace DndKata.Domain.Unit.Tests
             Assert.That(attackResult.WasHit, Is.True);
             Assert.That(attackResult.DamageDealt, Is.EqualTo(6));
         }
+
+        [Test]
+        public void StrengthAbility_EnhancesRoll()
+        {
+            // Arrange
+            const int initialOpponentHealth = 1;
+            var character = new Character
+            {
+                Abilities = new List<IAbility>
+                {
+                    new StrengthAbility{Score = 20}
+                }
+            };
+            var opponent = Builder<Character>
+                .CreateNew()
+                .Do(o => o.Armor = 14)
+                .Do(o => o.HealthPoints = initialOpponentHealth)
+                .Build();
+            const int roll = 10;
+
+            // Act
+            var attackResult = character.Attack(opponent, roll);
+
+            // Assert
+            
+        }
     }
 }
