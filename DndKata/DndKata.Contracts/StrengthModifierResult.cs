@@ -1,4 +1,4 @@
-﻿namespace DndKata.Domain.Models
+﻿namespace DndKata.Contracts
 {
     public class StrengthModifierResult
     {

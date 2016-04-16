@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DndKata\DndKata.Contracts\DndKata.Contracts.csproj">
-      <Project>{E6B8864F-C43F-4658-84C6-3A29F87DE596}</Project>
+      <Project>{e6b8864f-c43f-4658-84c6-3a29f87de596}</Project>
       <Name>DndKata.Contracts</Name>
     </ProjectReference>
   </ItemGroup>

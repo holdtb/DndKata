@@ -9,19 +9,17 @@ namespace DndKata.Domain.Unit.Tests
     [TestFixture]
     public class CharacterTests
     {
-        private RollCalculator _rollCalculator;
 
         [SetUp]
         public void Setup()
         {
-            _rollCalculator = new RollCalculator();
         }
 
         [Test]
         public void NewCharacter_SetsCorrectDefaults()
         {
             // Arrange
-            var character = new Character(_rollCalculator);
+            var character = new Character();
 
             // Act
             // Assert
@@ -35,7 +33,7 @@ namespace DndKata.Domain.Unit.Tests
         public void Character_CanAttack()
         {
             // Arrange
-            var character = new Character(_rollCalculator);
+            var character = new Character();
             var opponent = Builder<Character>.CreateNew().Build();
             const int roll = 5;
 
@@ -50,7 +48,7 @@ namespace DndKata.Domain.Unit.Tests
         public void Attack_RollLessThanOpponentArmor_DoesNotHit()
         {
             // Arrange
-            var character = new Character(_rollCalculator);
+            var character = new Character();
             var opponent = Builder<Character>
                 .CreateNew().Do(o => o.Armor = 2).Build();
             var roll = opponent.Armor - 1;
@@ -67,7 +65,7 @@ namespace DndKata.Domain.Unit.Tests
         {
             // Arrange
             const int initialOpponentHealth = 5;
-            var character = new Character(_rollCalculator);
+            var character = new Character();
             var opponent = Builder<Character>
                 .CreateNew()
                 .Do(o => o.Armor = 2)
@@ -89,7 +87,7 @@ namespace DndKata.Domain.Unit.Tests
         {
             // Arrange
             const int initialOpponentHealth = 5;
-            var character = new Character(_rollCalculator);
+            var character = new Character();
             var opponent = Builder<Character>
                 .CreateNew()
                 .Do(o => o.Armor = 2)
@@ -110,7 +108,7 @@ namespace DndKata.Domain.Unit.Tests
         public void NaturalTwentyRolled_CriticalHitAttack_DoublesDamage()
         {
             // Arrange
-            var character = new Character(_rollCalculator);
+            var character = new Character();
             var opponent = Builder<Character>
                 .CreateNew()
                 .Do(o => o.Armor = 5)
@@ -132,7 +130,7 @@ namespace DndKata.Domain.Unit.Tests
         {
             // Arrange
             const int initialOpponentHealth = 1;
-            var character = new Character(_rollCalculator);
+            var character = new Character();
             var opponent = Builder<Character>
                 .CreateNew()
                 .Do(o => o.Armor = 2)

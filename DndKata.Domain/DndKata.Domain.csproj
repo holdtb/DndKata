@@ -42,9 +42,7 @@
   <ItemGroup>
     <Compile Include="Models\AttackResult.cs" />
     <Compile Include="Models\Character.cs" />
-    <Compile Include="Models\RollCalculator.cs" />
     <Compile Include="Models\StrengthAbility.cs" />
-    <Compile Include="Models\StrengthModifierResult.cs" />
     <Compile Include="ModifierTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

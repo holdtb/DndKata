@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using DndKata.Contracts;
 using DndKata.Domain.Models;
 using FizzWare.NBuilder;
@@ -13,6 +9,12 @@ namespace DndKata.Domain.Unit.Tests
     [TestFixture]
     public class StrengthAbilityTests
     {
+
+        [SetUp]
+        public void BeforeEach()
+        {
+        }
+
         [Test]
         public void DefaultScoreOf10()
         {
@@ -120,18 +122,21 @@ namespace DndKata.Domain.Unit.Tests
                     new StrengthAbility{Score = 20}
                 }
             };
-            var opponent = Builder<Character>
-                .CreateNew()
-                .Do(o => o.Armor = 14)
-                .Do(o => o.HealthPoints = initialOpponentHealth)
-                .Build();
-            const int roll = 10;
+
+            var opponent = new Character
+            {
+                Armor = 2,
+                HealthPoints = initialOpponentHealth
+            };
+            
+            const int roll = 1;
 
             // Act
             var attackResult = character.Attack(opponent, roll);
 
             // Assert
-            
+            Assert.That(attackResult.WasHit);
+            Assert.That(attackResult.LethalHit);
         }
     }
 }

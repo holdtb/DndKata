@@ -7,15 +7,13 @@ namespace DndKata.Domain.Models
 {
     public class Character
     {
-        private readonly IRollCalculator _rollCalculator;
         public string Name { get; set; }
         public int Armor { get; set; }
         public int HealthPoints { get; set; }
         public List<IAbility> Abilities { get; set; }
 
-        public Character(IRollCalculator rollCalculator)
+        public Character()
         {
-            _rollCalculator = rollCalculator;
             Name = "Default";
             Armor = 10;
             HealthPoints = 5;
@@ -25,8 +23,7 @@ namespace DndKata.Domain.Models
         public AttackResult Attack(Character opponent, int roll)
         {
             var strengthModifierResult = GetStrengthModifier(Abilities);
-            var enhancedRoll = _rollCalculator.GetEnhancedRoll(roll, strengthModifierResult);
-
+            var enhancedRoll = roll + strengthModifierResult.Modifier;
 
             if (strengthModifierResult.AbilityPresent && enhancedRoll < opponent.Armor)
             {
